@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TaskManager - Issue & Work Tracking System</title>
+    <title>TaskManager v3.0 - Advanced Tracking System</title>
     <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -19,7 +19,6 @@
             color: #e5e7eb;
         }
 
-        /* ============ LANDING PAGE ============ */
         .landing-page {
             display: flex;
             align-items: center;
@@ -50,7 +49,6 @@
             font-size: 1.1rem;
             color: #8b92a0;
             margin-bottom: 40px;
-            line-height: 1.6;
         }
 
         .button-container {
@@ -69,7 +67,6 @@
             cursor: pointer;
             transition: all 0.3s ease;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
             min-width: 180px;
         }
 
@@ -80,7 +77,6 @@
 
         .btn-login:hover {
             background: #003fa3;
-            box-shadow: 0 8px 20px rgba(0, 82, 204, 0.3);
         }
 
         .btn-forgot {
@@ -93,7 +89,6 @@
             background: rgba(0, 82, 204, 0.1);
         }
 
-        /* ============ MAIN CONTAINER ============ */
         .main-container {
             display: none;
             min-height: 100vh;
@@ -104,7 +99,6 @@
             display: flex;
         }
 
-        /* ============ SIDEBAR ============ */
         .sidebar {
             width: 260px;
             background: #1a2332;
@@ -123,9 +117,6 @@
             font-weight: 700;
             color: #0052cc;
             margin-bottom: 30px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
         }
 
         .user-info {
@@ -201,7 +192,6 @@
             border-radius: 6px;
             cursor: pointer;
             font-weight: 600;
-            transition: all 0.3s;
             width: 100%;
             font-size: 0.9rem;
         }
@@ -210,7 +200,6 @@
             background: rgba(239, 68, 68, 0.2);
         }
 
-        /* ============ CONTENT AREA ============ */
         .content-area {
             flex: 1;
             margin-left: 260px;
@@ -229,7 +218,6 @@
             font-size: 2rem;
             font-weight: 700;
             color: #f0f4f8;
-            margin-bottom: 5px;
         }
 
         .page-header p {
@@ -250,7 +238,6 @@
             border-radius: 6px;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s;
             font-size: 0.9rem;
         }
 
@@ -258,7 +245,6 @@
             background: #003fa3;
         }
 
-        /* ============ SECTIONS ============ */
         .section {
             display: none;
         }
@@ -269,11 +255,10 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
-        /* ============ STATS GRID ============ */
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -287,11 +272,13 @@
             border-radius: 6px;
             padding: 20px;
             transition: all 0.3s ease;
+            cursor: pointer;
         }
 
         .stat-card:hover {
             border-color: #0052cc;
-            box-shadow: 0 4px 12px rgba(0, 82, 204, 0.1);
+            box-shadow: 0 4px 12px rgba(0, 82, 204, 0.2);
+            transform: translateY(-4px);
         }
 
         .stat-label {
@@ -300,27 +287,26 @@
             text-transform: uppercase;
             font-weight: 600;
             margin-bottom: 8px;
-            letter-spacing: 0.5px;
         }
 
         .stat-number {
             font-size: 2rem;
             font-weight: 700;
             color: #0052cc;
-            margin-bottom: 5px;
         }
 
         .stat-change {
             font-size: 0.8rem;
             color: #8b92a0;
+            margin-top: 8px;
         }
 
-        /* ============ TABLES ============ */
         .table-container {
             background: #1a2332;
             border: 1px solid #2d3748;
             border-radius: 6px;
             overflow: hidden;
+            margin-bottom: 20px;
         }
 
         table {
@@ -336,7 +322,6 @@
             border-bottom: 1px solid #2d3748;
             font-size: 0.85rem;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
             background: #151d2a;
         }
 
@@ -358,67 +343,8 @@
             font-size: 0.75rem;
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
         }
 
-        .status-todo {
-            background: rgba(107, 114, 128, 0.2);
-            color: #d1d5db;
-        }
-
-        .status-inprogress {
-            background: rgba(59, 130, 246, 0.2);
-            color: #93c5fd;
-        }
-
-        .status-inreview {
-            background: rgba(139, 92, 246, 0.2);
-            color: #c4b5fd;
-        }
-
-        .status-done {
-            background: rgba(34, 197, 94, 0.2);
-            color: #86efac;
-        }
-
-        .priority-high {
-            color: #ef4444;
-            font-weight: 600;
-        }
-
-        .priority-medium {
-            color: #f59e0b;
-            font-weight: 600;
-        }
-
-        .priority-low {
-            color: #22c55e;
-            font-weight: 600;
-        }
-
-        /* ============ PROGRESS BAR ============ */
-        .progress-bar {
-            width: 100%;
-            height: 8px;
-            background: #2d3748;
-            border-radius: 4px;
-            overflow: hidden;
-            margin: 8px 0;
-        }
-
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #0052cc, #003fa3);
-            transition: width 0.3s ease;
-        }
-
-        .progress-text {
-            font-size: 0.75rem;
-            color: #8b92a0;
-            margin-top: 4px;
-        }
-
-        /* ============ FORMS ============ */
         .form-container {
             background: #1a2332;
             border: 1px solid #2d3748;
@@ -437,6 +363,16 @@
             font-weight: 600;
             color: #e5e7eb;
             font-size: 0.9rem;
+        }
+
+        .form-label .required {
+            color: #ef4444;
+        }
+
+        .form-label .optional {
+            color: #8b92a0;
+            font-weight: 400;
+            font-size: 0.85rem;
         }
 
         .form-input,
@@ -459,22 +395,11 @@
             outline: none;
             border-color: #0052cc;
             box-shadow: 0 0 0 3px rgba(0, 82, 204, 0.1);
-            background: #1a2332;
-        }
-
-        .form-input::placeholder {
-            color: #4b5563;
         }
 
         .form-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 15px;
-        }
-
-        .form-row-3 {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
             gap: 15px;
         }
 
@@ -486,7 +411,6 @@
             border-radius: 6px;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s ease;
             font-size: 0.9rem;
             width: 100%;
         }
@@ -503,7 +427,6 @@
             border-radius: 6px;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s ease;
             font-size: 0.85rem;
         }
 
@@ -511,7 +434,15 @@
             background: rgba(0, 82, 204, 0.1);
         }
 
-        /* ============ MODALS ============ */
+        .btn-danger {
+            background: #dc2626;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #b91c1c;
+        }
+
         .modal {
             display: none;
             position: fixed;
@@ -520,7 +451,6 @@
             width: 100%;
             height: 100%;
             background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(5px);
             z-index: 1000;
             justify-content: center;
             align-items: center;
@@ -537,7 +467,7 @@
             border: 1px solid #2d3748;
             border-radius: 8px;
             padding: 30px;
-            max-width: 600px;
+            max-width: 700px;
             width: 100%;
             max-height: 90vh;
             overflow-y: auto;
@@ -554,7 +484,6 @@
             color: #8b92a0;
             font-size: 1.5rem;
             cursor: pointer;
-            transition: color 0.3s;
         }
 
         .modal-close:hover {
@@ -568,12 +497,10 @@
             color: #f0f4f8;
         }
 
-        /* ============ ALERTS ============ */
         .alert {
             padding: 12px 16px;
             border-radius: 6px;
             margin-bottom: 15px;
-            animation: slideDown 0.3s ease;
             font-size: 0.9rem;
         }
 
@@ -595,18 +522,7 @@
             color: #93c5fd;
         }
 
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .work-item-card {
+        .item-card {
             background: #151d2a;
             border: 1px solid #2d3748;
             border-radius: 6px;
@@ -614,50 +530,53 @@
             margin-bottom: 12px;
         }
 
-        .work-header {
+        .item-card:hover {
+            border-color: #0052cc;
+            box-shadow: 0 4px 12px rgba(0, 82, 204, 0.1);
+        }
+
+        .item-header {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
             margin-bottom: 12px;
         }
 
-        .work-title {
+        .item-title {
             font-weight: 600;
             color: #f0f4f8;
             margin-bottom: 4px;
         }
 
-        .work-meta {
+        .item-id {
             font-size: 0.85rem;
             color: #8b92a0;
         }
 
-        .work-stats {
+        .item-meta {
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             gap: 12px;
-            margin-bottom: 12px;
             font-size: 0.85rem;
+            margin-bottom: 12px;
         }
 
-        .work-stat {
+        .item-meta-item {
             background: #1a2332;
             padding: 8px;
             border-radius: 4px;
-            text-align: center;
         }
 
-        .work-stat-label {
+        .item-meta-label {
             color: #8b92a0;
             display: block;
             font-size: 0.75rem;
             margin-bottom: 4px;
         }
 
-        .work-stat-value {
+        .item-meta-value {
             color: #0052cc;
-            font-weight: 700;
-            font-size: 1rem;
+            font-weight: 600;
         }
 
         .admin-badge {
@@ -671,18 +590,191 @@
             margin-left: 8px;
         }
 
+        .file-input-label {
+            display: block;
+            padding: 10px;
+            background: rgba(0, 82, 204, 0.1);
+            border: 2px dashed #0052cc;
+            border-radius: 6px;
+            text-align: center;
+            cursor: pointer;
+            color: #0052cc;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .file-input-label:hover {
+            background: rgba(0, 82, 204, 0.2);
+        }
+
+        .attachments-list {
+            list-style: none;
+            margin-top: 10px;
+        }
+
+        .attachment-item {
+            background: #1a2332;
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 6px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .attachment-name {
+            color: #0052cc;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .attachment-name:hover {
+            text-decoration: underline;
+        }
+
+        .workflow-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 12px;
+        }
+
+        .status-button {
+            padding: 8px 16px;
+            background: transparent;
+            border: 1px solid #0052cc;
+            color: #0052cc;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .status-button:hover:not(:disabled) {
+            background: rgba(0, 82, 204, 0.1);
+        }
+
+        .status-button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .access-indicator {
+            padding: 8px 12px;
+            background: rgba(34, 197, 94, 0.1);
+            border-left: 3px solid #22c55e;
+            border-radius: 4px;
+            color: #86efac;
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+        }
+
+        .no-access {
+            padding: 20px;
+            text-align: center;
+            color: #8b92a0;
+            background: rgba(239, 68, 68, 0.05);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+            border-radius: 6px;
+        }
+
+        .customize-dashboard {
+            background: #151d2a;
+            border: 1px solid #2d3748;
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .customize-dashboard h4 {
+            color: #0052cc;
+            margin-bottom: 12px;
+            font-size: 0.9rem;
+        }
+
+        .checkbox-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .checkbox-item input {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            accent-color: #0052cc;
+        }
+
+        .checkbox-item label {
+            cursor: pointer;
+            color: #e5e7eb;
+            font-size: 0.9rem;
+        }
+
+        .settings-group {
+            background: #151d2a;
+            border: 1px solid #2d3748;
+            border-radius: 6px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .settings-group h3 {
+            color: #0052cc;
+            margin-bottom: 15px;
+            font-size: 1rem;
+        }
+
+        .field-list {
+            list-style: none;
+        }
+
+        .field-item {
+            background: #1a2332;
+            padding: 12px;
+            border-radius: 4px;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .user-list-item {
+            background: #151d2a;
+            border: 1px solid #2d3748;
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .user-list-info h4 {
+            color: #f0f4f8;
+            margin-bottom: 4px;
+        }
+
+        .user-list-info p {
+            color: #8b92a0;
+            font-size: 0.85rem;
+        }
+
         .hidden {
             display: none !important;
         }
 
-        /* ============ RESPONSIVE ============ */
         @media (max-width: 768px) {
             .sidebar {
                 width: 100%;
-                height: auto;
                 position: relative;
-                margin-bottom: 20px;
-                padding: 15px;
             }
 
             .content-area {
@@ -694,25 +786,11 @@
                 grid-template-columns: 1fr;
             }
 
-            .form-row-3 {
+            .item-meta {
                 grid-template-columns: 1fr;
             }
 
-            .work-stats {
-                grid-template-columns: 1fr;
-            }
-
-            .page-header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 15px;
-            }
-
-            .page-header h1 {
-                font-size: 1.5rem;
-            }
-
-            .stats-grid {
+            .checkbox-group {
                 grid-template-columns: 1fr;
             }
         }
@@ -723,8 +801,8 @@
     <div id="landingPage" class="landing-page">
         <div class="landing-content">
             <div class="landing-logo">📋</div>
-            <h1>TaskManager</h1>
-            <p>Professional Issue & Work Tracking System</p>
+            <h1>TaskManager v3.0</h1>
+            <p>Advanced Issue & Work Tracking System</p>
             <div class="button-container">
                 <button class="big-button btn-login" onclick="openLoginModal()">Login</button>
                 <button class="big-button btn-forgot" onclick="openForgotPasswordModal()">Forgot Password?</button>
@@ -736,19 +814,19 @@
     <div id="loginModal" class="modal">
         <div class="modal-content">
             <button class="modal-close" onclick="closeModal('loginModal')">&times;</button>
-            <h2 class="modal-title">Login to TaskManager</h2>
+            <h2 class="modal-title">Login</h2>
             <div id="loginAlert"></div>
             <div class="form-group">
                 <label class="form-label">Username</label>
-                <input type="text" class="form-input" id="loginUsername" placeholder="Enter your username">
+                <input type="text" class="form-input" id="loginUsername" placeholder="Enter username">
             </div>
             <div class="form-group">
                 <label class="form-label">Password</label>
-                <input type="password" class="form-input" id="loginPassword" placeholder="Enter your password">
+                <input type="password" class="form-input" id="loginPassword" placeholder="Enter password">
             </div>
             <button class="btn-primary" onclick="login()">Login</button>
-            <div style="margin-top: 20px; text-align: center; color: #8b92a0; font-size: 0.9rem;">
-                <a onclick="openForgotPasswordModal(); closeModal('loginModal');" style="color: #0052cc; cursor: pointer; text-decoration: none;">Forgot your password?</a>
+            <div style="margin-top: 15px; text-align: center; color: #8b92a0; font-size: 0.9rem;">
+                <a onclick="openForgotPasswordModal(); closeModal('loginModal');" style="color: #0052cc; cursor: pointer;">Forgot password?</a>
             </div>
         </div>
     </div>
@@ -761,22 +839,22 @@
             <div id="forgotAlert"></div>
             <div id="forgotStep1">
                 <div class="form-group">
-                    <label class="form-label">Email Address</label>
-                    <input type="email" class="form-input" id="forgotEmail" placeholder="Enter your registered email">
+                    <label class="form-label">Email</label>
+                    <input type="email" class="form-input" id="forgotEmail" placeholder="Enter email">
                 </div>
-                <button class="btn-primary" onclick="sendVerificationCode()">Send Verification Code</button>
+                <button class="btn-primary" onclick="sendVerificationCode()">Send Code</button>
             </div>
             <div id="forgotStep2" style="display: none;">
-                <div class="alert alert-info">Verification code sent to your email. Enter it below.</div>
+                <div class="alert alert-info">Code sent to email</div>
                 <div class="form-group">
                     <label class="form-label">Verification Code</label>
-                    <input type="text" class="form-input" id="verificationCode" placeholder="000000" maxlength="6">
+                    <input type="text" class="form-input" id="verificationCode" maxlength="6">
                 </div>
                 <div class="form-group">
                     <label class="form-label">New Password</label>
-                    <input type="password" class="form-input" id="newPassword" placeholder="Enter new password">
+                    <input type="password" class="form-input" id="newPassword">
                 </div>
-                <button class="btn-primary" onclick="resetPassword()">Reset Password</button>
+                <button class="btn-primary" onclick="resetPassword()">Reset</button>
             </div>
         </div>
     </div>
@@ -785,7 +863,7 @@
     <div id="mainContainer" class="main-container">
         <!-- SIDEBAR -->
         <div class="sidebar">
-            <div class="logo">📋 TaskManager</div>
+            <div class="logo">📋 TaskManager v3.0</div>
             <div class="user-info">
                 <div class="user-name" id="sidebarUserName">User <span class="admin-badge" id="adminBadge" style="display: none;">ADMIN</span></div>
                 <div class="user-role" id="sidebarUserRole">User</div>
@@ -794,12 +872,12 @@
                 <div class="nav-section">
                     <div class="nav-section-title">Main</div>
                     <div class="nav-item active" data-page="dashboard" onclick="switchPage('dashboard')">📊 Dashboard</div>
+                    <div class="nav-item" data-page="projects" onclick="switchPage('projects')">📁 Projects</div>
                     <div class="nav-item" data-page="issues" onclick="switchPage('issues')">🐛 Issues</div>
                     <div class="nav-item" data-page="work-items" onclick="switchPage('work-items')">⏱️ Work Items</div>
-                    <div class="nav-item" data-page="projects" onclick="switchPage('projects')">📁 Projects</div>
                 </div>
                 <div class="nav-section" id="adminSection" style="display: none;">
-                    <div class="nav-section-title">Administration</div>
+                    <div class="nav-section-title">Admin</div>
                     <div class="nav-item" data-page="user-management" onclick="switchPage('user-management')">👥 Users</div>
                     <div class="nav-item" data-page="settings" onclick="switchPage('settings')">⚙️ Settings</div>
                 </div>
@@ -814,74 +892,77 @@
                 <div class="page-header">
                     <div>
                         <h1>Dashboard</h1>
-                        <p>Overview of your work and issues</p>
+                        <p>Overview of your work and projects</p>
+                    </div>
+                    <div class="header-right" id="customizeDashboardBtn" style="display: none;">
+                        <button class="btn-add" onclick="openCustomizeDashboardModal()">⚙️ Customize</button>
                     </div>
                 </div>
+
+                <!-- Customize Dashboard (Admin Only) -->
+                <div class="customize-dashboard" id="customizeDashboardSection" style="display: none;">
+                    <h4>🎨 Customize Your Dashboard</h4>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="showProjects" checked onchange="saveDashboardPreferences()">
+                            <label for="showProjects">Total Projects</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="showIssues" checked onchange="saveDashboardPreferences()">
+                            <label for="showIssues">Total Issues</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="showWorkItems" checked onchange="saveDashboardPreferences()">
+                            <label for="showWorkItems">Work Items</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="showAssigned" checked onchange="saveDashboardPreferences()">
+                            <label for="showAssigned">My Assigned</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="showCompleted" checked onchange="saveDashboardPreferences()">
+                            <label for="showCompleted">Completed Items</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="showInProgress" checked onchange="saveDashboardPreferences()">
+                            <label for="showInProgress">In Progress</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stats Grid - Click to navigate -->
                 <div class="stats-grid">
-                    <div class="stat-card">
+                    <div class="stat-card" id="projectsCard" onclick="switchPage('projects')">
+                        <div class="stat-label">Total Projects</div>
+                        <div class="stat-number" id="totalProjects">0</div>
+                        <div class="stat-change">Click to view projects →</div>
+                    </div>
+                    <div class="stat-card" id="issuesCard" onclick="switchPage('issues')">
                         <div class="stat-label">Total Issues</div>
                         <div class="stat-number" id="totalIssues">0</div>
-                        <div class="stat-change">All statuses</div>
+                        <div class="stat-change">Click to view issues →</div>
                     </div>
-                    <div class="stat-card">
+                    <div class="stat-card" id="workItemsCard" onclick="switchPage('work-items')">
                         <div class="stat-label">Work Items</div>
                         <div class="stat-number" id="totalWorkItems">0</div>
-                        <div class="stat-change">Tracked work</div>
+                        <div class="stat-change">Click to view work →</div>
                     </div>
-                    <div class="stat-card">
-                        <div class="stat-label">Total Estimated Hours</div>
-                        <div class="stat-number" id="totalEstimatedHours">0</div>
-                        <div class="stat-change">All work items</div>
+                    <div class="stat-card" id="assignedCard" onclick="filterMyAssigned()">
+                        <div class="stat-label">My Assigned</div>
+                        <div class="stat-number" id="myAssigned">0</div>
+                        <div class="stat-change">Click to view assigned →</div>
                     </div>
-                    <div class="stat-card">
-                        <div class="stat-label">Total Hours Logged</div>
-                        <div class="stat-number" id="totalLoggedHours">0</div>
-                        <div class="stat-change">Completed work</div>
+                    <div class="stat-card" id="completedCard" onclick="filterCompleted()">
+                        <div class="stat-label">Completed Items</div>
+                        <div class="stat-number" id="completedCount">0</div>
+                        <div class="stat-change">Click to view completed →</div>
                     </div>
-                </div>
-            </div>
-
-            <!-- ISSUES -->
-            <div id="issues" class="section">
-                <div class="page-header">
-                    <div>
-                        <h1>Issues</h1>
-                        <p>View and manage all issues</p>
-                    </div>
-                    <div class="header-right">
-                        <button class="btn-add" onclick="openCreateIssueModal()">+ Create Issue</button>
+                    <div class="stat-card" id="inProgressCard" onclick="filterInProgress()">
+                        <div class="stat-label">In Progress</div>
+                        <div class="stat-number" id="inProgressCount">0</div>
+                        <div class="stat-change">Click to view in progress →</div>
                     </div>
                 </div>
-                <div class="table-container">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Issue ID</th>
-                                <th>Summary</th>
-                                <th>Project</th>
-                                <th>Type</th>
-                                <th>Priority</th>
-                                <th>Status</th>
-                                <th>Assignee</th>
-                            </tr>
-                        </thead>
-                        <tbody id="issuesTableBody"></tbody>
-                    </table>
-                </div>
-            </div>
-
-            <!-- WORK ITEMS -->
-            <div id="work-items" class="section">
-                <div class="page-header">
-                    <div>
-                        <h1>Work Items & Time Tracking</h1>
-                        <p>Track work, time, and effort</p>
-                    </div>
-                    <div class="header-right">
-                        <button class="btn-add" onclick="openCreateWorkItemModal()">+ Create Work Item</button>
-                    </div>
-                </div>
-                <div id="workItemsList"></div>
             </div>
 
             <!-- PROJECTS -->
@@ -889,21 +970,49 @@
                 <div class="page-header">
                     <div>
                         <h1>Projects</h1>
-                        <p>Manage all your projects</p>
+                        <p>Manage your projects and assign team members</p>
                     </div>
                     <div class="header-right">
-                        <button class="btn-add" onclick="openCreateProjectModal()">+ Create Project</button>
+                        <button class="btn-add" id="createProjectBtn" onclick="openCreateProjectModal()" style="display: none;">+ New Project</button>
                     </div>
                 </div>
                 <div id="projectsList"></div>
             </div>
 
-            <!-- USER MANAGEMENT (ADMIN ONLY) -->
+            <!-- ISSUES -->
+            <div id="issues" class="section">
+                <div class="page-header">
+                    <div>
+                        <h1>Issues</h1>
+                        <p>Track and manage issues with custom workflows</p>
+                    </div>
+                    <div class="header-right">
+                        <button class="btn-add" id="createIssueBtn" onclick="openCreateIssueModal()" style="display: none;">+ New Issue</button>
+                    </div>
+                </div>
+                <div id="issuesList"></div>
+            </div>
+
+            <!-- WORK ITEMS -->
+            <div id="work-items" class="section">
+                <div class="page-header">
+                    <div>
+                        <h1>Work Items</h1>
+                        <p>Track work with time and effort tracking</p>
+                    </div>
+                    <div class="header-right">
+                        <button class="btn-add" id="createWorkBtn" onclick="openCreateWorkItemModal()" style="display: none;">+ New Work Item</button>
+                    </div>
+                </div>
+                <div id="workItemsList"></div>
+            </div>
+
+            <!-- USER MANAGEMENT -->
             <div id="user-management" class="section">
                 <div class="page-header">
                     <div>
                         <h1>User Management</h1>
-                        <p>Create and manage users</p>
+                        <p>Create, edit, and manage users</p>
                     </div>
                     <div class="header-right">
                         <button class="btn-add" onclick="openCreateUserModal()">+ Create User</button>
@@ -912,26 +1021,21 @@
                 <div id="usersList"></div>
             </div>
 
-            <!-- SETTINGS (ADMIN ONLY) -->
+            <!-- SETTINGS -->
             <div id="settings" class="section">
                 <div class="page-header">
                     <div>
                         <h1>System Settings</h1>
-                        <p>Configure system-wide settings</p>
+                        <p>Customize workflows, fields, and system settings</p>
                     </div>
                 </div>
 
-                <div class="settings-group" style="background: #151d2a; border: 1px solid #2d3748; border-radius: 6px; padding: 20px; margin-bottom: 20px;">
-                    <h3 style="color: #0052cc; margin-bottom: 15px;">Issue Types</h3>
-                    <div style="margin-bottom: 15px;">
-                        <input type="text" class="form-input" id="newIssueType" placeholder="Enter new issue type" style="margin-bottom: 8px;">
-                        <button class="btn-secondary" onclick="addIssueType()" style="width: auto;">Add Issue Type</button>
-                    </div>
-                    <ul class="field-list" id="issueTypesList"></ul>
-                </div>
-
-                <div class="settings-group" style="background: #151d2a; border: 1px solid #2d3748; border-radius: 6px; padding: 20px; margin-bottom: 20px;">
-                    <h3 style="color: #0052cc; margin-bottom: 15px;">Issue Status</h3>
+                <!-- Issue Workflow Settings -->
+                <div class="settings-group">
+                    <h3>📋 Issue Workflow Status</h3>
+                    <p style="color: #8b92a0; font-size: 0.85rem; margin-bottom: 15px;">
+                        Current Workflow: New → Rejected | New → Open → Deferred | Open → Fixed → Retest → (Reopen → Fixed) / Closed
+                    </p>
                     <div style="margin-bottom: 15px;">
                         <input type="text" class="form-input" id="newIssueStatus" placeholder="Enter new status" style="margin-bottom: 8px;">
                         <button class="btn-secondary" onclick="addIssueStatus()" style="width: auto;">Add Status</button>
@@ -939,175 +1043,168 @@
                     <ul class="field-list" id="issueStatusList"></ul>
                 </div>
 
-                <div class="settings-group" style="background: #151d2a; border: 1px solid #2d3748; border-radius: 6px; padding: 20px; margin-bottom: 20px;">
-                    <h3 style="color: #0052cc; margin-bottom: 15px;">Issue Priority</h3>
+                <!-- Work Item Workflow Settings -->
+                <div class="settings-group">
+                    <h3>⏱️ Work Item Workflow Status</h3>
                     <div style="margin-bottom: 15px;">
-                        <input type="text" class="form-input" id="newIssuePriority" placeholder="Enter new priority" style="margin-bottom: 8px;">
-                        <button class="btn-secondary" onclick="addIssuePriority()" style="width: auto;">Add Priority</button>
+                        <input type="text" class="form-input" id="newWorkItemStatus" placeholder="Enter new status" style="margin-bottom: 8px;">
+                        <button class="btn-secondary" onclick="addWorkItemStatus()" style="width: auto;">Add Status</button>
                     </div>
-                    <ul class="field-list" id="issuePriorityList"></ul>
+                    <ul class="field-list" id="workItemStatusList"></ul>
                 </div>
 
-                <div class="settings-group" style="background: #151d2a; border: 1px solid #2d3748; border-radius: 6px; padding: 20px;">
-                    <h3 style="color: #0052cc; margin-bottom: 15px;">Defect Categories</h3>
+                <!-- Priority Settings -->
+                <div class="settings-group">
+                    <h3>⚡ Priority Levels</h3>
                     <div style="margin-bottom: 15px;">
-                        <input type="text" class="form-input" id="newDefectCategory" placeholder="Enter new defect category" style="margin-bottom: 8px;">
+                        <input type="text" class="form-input" id="newPriority" placeholder="Enter priority level" style="margin-bottom: 8px;">
+                        <button class="btn-secondary" onclick="addPriority()" style="width: auto;">Add Priority</button>
+                    </div>
+                    <ul class="field-list" id="priorityList"></ul>
+                </div>
+
+                <!-- Defect Categories Settings -->
+                <div class="settings-group">
+                    <h3>🏷️ Defect Categories</h3>
+                    <div style="margin-bottom: 15px;">
+                        <input type="text" class="form-input" id="newDefectCategory" placeholder="Enter category" style="margin-bottom: 8px;">
                         <button class="btn-secondary" onclick="addDefectCategory()" style="width: auto;">Add Category</button>
                     </div>
-                    <ul class="field-list" id="defectCategoriesList"></ul>
+                    <ul class="field-list" id="defectCategoryList"></ul>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- CREATE ISSUE MODAL -->
-    <div id="createIssueModal" class="modal">
-        <div class="modal-content">
-            <button class="modal-close" onclick="closeModal('createIssueModal')">&times;</button>
-            <h2 class="modal-title">Create Issue</h2>
-            <div id="issueAlert"></div>
-            <div class="form-group">
-                <label class="form-label">Summary</label>
-                <input type="text" class="form-input" id="issueSummary" placeholder="Brief description of the issue">
-            </div>
-            <div class="form-group">
-                <label class="form-label">Project</label>
-                <select class="form-select" id="issueProject"></select>
-            </div>
-            <div class="form-row">
-                <div class="form-group">
-                    <label class="form-label">Type</label>
-                    <select class="form-select" id="issueType"></select>
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Priority</label>
-                    <select class="form-select" id="issuePriority"></select>
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="form-label">Assign To (User)</label>
-                <select class="form-select" id="issueAssignee"></select>
-            </div>
-            <div class="form-group">
-                <label class="form-label">Description</label>
-                <textarea class="form-textarea" id="issueDescription" rows="3" placeholder="Detailed description"></textarea>
-            </div>
-            <button class="btn-primary" onclick="createIssue()">Create Issue</button>
-        </div>
-    </div>
-
-    <!-- CREATE WORK ITEM MODAL -->
-    <div id="createWorkItemModal" class="modal">
-        <div class="modal-content">
-            <button class="modal-close" onclick="closeModal('createWorkItemModal')">&times;</button>
-            <h2 class="modal-title">Create Work Item</h2>
-            <div id="workAlert"></div>
-            <div class="form-group">
-                <label class="form-label">Work Title</label>
-                <input type="text" class="form-input" id="workTitle" placeholder="e.g., Design login page">
-            </div>
-            <div class="form-group">
-                <label class="form-label">Issue</label>
-                <select class="form-select" id="workIssue"></select>
-            </div>
-            <div class="form-group">
-                <label class="form-label">Assign To</label>
-                <select class="form-select" id="workAssignee"></select>
-            </div>
-            <div class="form-row">
-                <div class="form-group">
-                    <label class="form-label">Estimated Hours</label>
-                    <input type="number" class="form-input" id="workEstimated" placeholder="e.g., 4" min="0" step="0.5">
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Priority</label>
-                    <select class="form-select" id="workPriority">
-                        <option value="Low">Low</option>
-                        <option value="Medium">Medium</option>
-                        <option value="High">High</option>
-                    </select>
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="form-label">Description</label>
-                <textarea class="form-textarea" id="workDescription" rows="3" placeholder="Work details"></textarea>
-            </div>
-            <button class="btn-primary" onclick="createWorkItem()">Create Work Item</button>
-        </div>
-    </div>
-
-    <!-- LOG WORK MODAL -->
-    <div id="logWorkModal" class="modal">
-        <div class="modal-content">
-            <button class="modal-close" onclick="closeModal('logWorkModal')">&times;</button>
-            <h2 class="modal-title">Log Work Hours</h2>
-            <div id="logWorkAlert"></div>
-            <div class="form-group">
-                <label class="form-label">Hours Worked</label>
-                <input type="number" class="form-input" id="hoursWorked" placeholder="e.g., 2.5" min="0" step="0.5">
-            </div>
-            <div class="form-group">
-                <label class="form-label">Work Details</label>
-                <textarea class="form-textarea" id="workDetails" rows="3" placeholder="What did you work on?"></textarea>
-            </div>
-            <div class="form-group">
-                <label class="form-label">Status</label>
-                <select class="form-select" id="logWorkStatus">
-                    <option value="In Progress">In Progress</option>
-                    <option value="Completed">Completed</option>
-                    <option value="Blocked">Blocked</option>
-                </select>
-            </div>
-            <button class="btn-primary" onclick="submitWorkLog()">Log Work</button>
-        </div>
-    </div>
-
-    <!-- CREATE PROJECT MODAL -->
+    <!-- MODALS -->
     <div id="createProjectModal" class="modal">
         <div class="modal-content">
             <button class="modal-close" onclick="closeModal('createProjectModal')">&times;</button>
             <h2 class="modal-title">Create Project</h2>
             <div id="projectAlert"></div>
             <div class="form-group">
-                <label class="form-label">Project Name</label>
-                <input type="text" class="form-input" id="projectName" placeholder="e.g., Mobile App">
+                <label class="form-label">Project Name <span class="required">*</span></label>
+                <input type="text" class="form-input" id="projectName" placeholder="e.g., Excel Work">
             </div>
             <div class="form-group">
-                <label class="form-label">Project Key</label>
-                <input type="text" class="form-input" id="projectKey" placeholder="e.g., MA" maxlength="3">
+                <label class="form-label">Project Key <span class="required">*</span> <span class="optional">(2-3 characters)</span></label>
+                <input type="text" class="form-input" id="projectKey" placeholder="e.g., EW" maxlength="3">
             </div>
             <div class="form-group">
-                <label class="form-label">Description</label>
-                <textarea class="form-textarea" id="projectDesc" rows="3" placeholder="Project description"></textarea>
+                <label class="form-label">Description <span class="optional">(Optional)</span></label>
+                <textarea class="form-textarea" id="projectDesc" placeholder="Project description" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Assign Users to Project <span class="optional">(Optional)</span></label>
+                <div id="projectUsersCheckbox"></div>
             </div>
             <button class="btn-primary" onclick="createProject()">Create Project</button>
         </div>
     </div>
 
-    <!-- CREATE USER MODAL (ADMIN) -->
+    <div id="createIssueModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('createIssueModal')">&times;</button>
+            <h2 class="modal-title">Create Issue</h2>
+            <div id="issueAlert"></div>
+            <div class="form-group">
+                <label class="form-label">Project <span class="required">*</span></label>
+                <select class="form-select" id="issueProject"></select>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Title <span class="required">*</span></label>
+                <input type="text" class="form-input" id="issueTitle" placeholder="Issue title">
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label class="form-label">Priority <span class="optional">(Optional)</span></label>
+                    <select class="form-select" id="issuePriority"></select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Assign To <span class="optional">(Optional)</span></label>
+                    <select class="form-select" id="issueAssignee"></select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Description <span class="optional">(Optional)</span></label>
+                <textarea class="form-textarea" id="issueDesc" placeholder="Issue description" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Attachments <span class="optional">(PDF, Word, Excel, Images)</span></label>
+                <label class="file-input-label">📁 Click or drag files here
+                    <input type="file" id="issueFiles" multiple accept=".pdf,.doc,.docx,.xls,.xlsx,.jpg,.jpeg,.png">
+                </label>
+                <ul class="attachments-list" id="issueFilesList"></ul>
+            </div>
+            <button class="btn-primary" onclick="createIssue()">Create Issue</button>
+        </div>
+    </div>
+
+    <div id="createWorkItemModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('createWorkItemModal')">&times;</button>
+            <h2 class="modal-title">Create Work Item</h2>
+            <div id="workAlert"></div>
+            <div class="form-group">
+                <label class="form-label">Project <span class="required">*</span></label>
+                <select class="form-select" id="workProject"></select>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Issue <span class="required">*</span></label>
+                <select class="form-select" id="workIssue"></select>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Title <span class="required">*</span></label>
+                <input type="text" class="form-input" id="workTitle" placeholder="Work item title">
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label class="form-label">Assign To <span class="optional">(Optional)</span></label>
+                    <select class="form-select" id="workAssignee"></select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Estimated Hours <span class="optional">(Optional)</span></label>
+                    <input type="number" class="form-input" id="workEstimated" placeholder="e.g., 4" step="0.5">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Description <span class="optional">(Optional)</span></label>
+                <textarea class="form-textarea" id="workDesc" placeholder="Work description" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Attachments <span class="optional">(PDF, Word, Excel, Images)</span></label>
+                <label class="file-input-label">📁 Click or drag files here
+                    <input type="file" id="workFiles" multiple accept=".pdf,.doc,.docx,.xls,.xlsx,.jpg,.jpeg,.png">
+                </label>
+                <ul class="attachments-list" id="workFilesList"></ul>
+            </div>
+            <button class="btn-primary" onclick="createWorkItem()">Create Work Item</button>
+        </div>
+    </div>
+
     <div id="createUserModal" class="modal">
         <div class="modal-content">
             <button class="modal-close" onclick="closeModal('createUserModal')">&times;</button>
             <h2 class="modal-title">Create User</h2>
             <div id="userAlert"></div>
             <div class="form-group">
-                <label class="form-label">Full Name</label>
-                <input type="text" class="form-input" id="newUserName" placeholder="Enter full name">
+                <label class="form-label">Full Name <span class="required">*</span></label>
+                <input type="text" class="form-input" id="newUserName" placeholder="Full name">
             </div>
             <div class="form-group">
-                <label class="form-label">Username</label>
-                <input type="text" class="form-input" id="newUsername" placeholder="Enter username">
+                <label class="form-label">Username <span class="required">*</span></label>
+                <input type="text" class="form-input" id="newUsername" placeholder="Username">
             </div>
             <div class="form-group">
-                <label class="form-label">Email</label>
-                <input type="email" class="form-input" id="newUserEmail" placeholder="Enter email">
+                <label class="form-label">Email <span class="required">*</span></label>
+                <input type="email" class="form-input" id="newUserEmail" placeholder="Email">
             </div>
             <div class="form-group">
-                <label class="form-label">Password</label>
-                <input type="password" class="form-input" id="newUserPassword" placeholder="Enter password">
+                <label class="form-label">Password <span class="required">*</span></label>
+                <input type="password" class="form-input" id="newUserPassword" placeholder="Password">
             </div>
             <div class="form-group">
-                <label class="form-label">Role</label>
+                <label class="form-label">Role <span class="required">*</span></label>
                 <select class="form-select" id="newUserRole">
                     <option value="user">User</option>
                     <option value="admin">Admin</option>
@@ -1118,16 +1215,14 @@
     </div>
 
     <script>
-        // Initialize data
         let currentUser = null;
         let verificationCode = null;
         let resetEmail = null;
-        let currentWorkItemId = null;
+        let currentEditingItem = null;
+        let currentEditingType = null;
 
-        // Initialize app with admin user
         function initializeApp() {
             const users = JSON.parse(localStorage.getItem('taskManagerUsers')) || {};
-            
             if (!users['Amar']) {
                 users['Amar'] = {
                     username: 'Amar',
@@ -1141,32 +1236,15 @@
             }
 
             const settings = JSON.parse(localStorage.getItem('taskManagerSettings')) || {};
-            if (!settings.issueTypes) {
-                settings.issueTypes = ['Bug', 'Task', 'Story', 'Epic'];
-                settings.issueStatus = ['To Do', 'In Progress', 'In Review', 'Done'];
-                settings.issuePriority = ['Low', 'Medium', 'High', 'Critical'];
+            if (!settings.issueStatus) {
+                settings.issueStatus = ['New', 'Rejected', 'Open', 'Deferred', 'Fixed', 'Retest', 'Reopen', 'Closed'];
+                settings.workItemStatus = ['Assigned', 'Picked up', 'In Progress', 'Failed', 'Blocked', 'Completed'];
+                settings.priorities = ['Low', 'Medium', 'High', 'Critical'];
                 settings.defectCategories = ['UI Issue', 'Performance', 'Security', 'Data Loss', 'Functional'];
                 localStorage.setItem('taskManagerSettings', JSON.stringify(settings));
             }
         }
 
-        // Load data
-        function loadData() {
-            const users = JSON.parse(localStorage.getItem('taskManagerUsers')) || {};
-            if (currentUser && users[currentUser.username]) {
-                currentUser = users[currentUser.username];
-            }
-        }
-
-        function saveData() {
-            const users = JSON.parse(localStorage.getItem('taskManagerUsers')) || {};
-            if (currentUser) {
-                users[currentUser.username] = currentUser;
-                localStorage.setItem('taskManagerUsers', JSON.stringify(users));
-            }
-        }
-
-        // Modal functions
         function openLoginModal() {
             document.getElementById('loginModal').classList.add('active');
             document.getElementById('landingPage').style.display = 'none';
@@ -1176,7 +1254,6 @@
             document.getElementById('forgotPasswordModal').classList.add('active');
             document.getElementById('forgotStep1').style.display = 'block';
             document.getElementById('forgotStep2').style.display = 'none';
-            document.getElementById('forgotAlert').innerHTML = '';
             document.getElementById('landingPage').style.display = 'none';
         }
 
@@ -1184,7 +1261,6 @@
             document.getElementById(modalId).classList.remove('active');
         }
 
-        // Authentication
         function login() {
             const username = document.getElementById('loginUsername').value;
             const password = document.getElementById('loginPassword').value;
@@ -1212,33 +1288,30 @@
             const alertDiv = document.getElementById('forgotAlert');
 
             if (!email) {
-                alertDiv.innerHTML = '<div class="alert alert-error">Please enter your email address</div>';
+                alertDiv.innerHTML = '<div class="alert alert-error">Please enter email</div>';
                 return;
             }
 
             const users = JSON.parse(localStorage.getItem('taskManagerUsers')) || {};
             let userFound = false;
 
-            for (let username in users) {
-                if (users[username].email === email) {
+            for (let u in users) {
+                if (users[u].email === email) {
                     userFound = true;
                     break;
                 }
             }
 
             if (!userFound) {
-                alertDiv.innerHTML = '<div class="alert alert-error">Email not found in system</div>';
+                alertDiv.innerHTML = '<div class="alert alert-error">Email not found</div>';
                 return;
             }
 
             verificationCode = Math.floor(100000 + Math.random() * 900000).toString();
             resetEmail = email;
-
-            alertDiv.innerHTML = '<div class="alert alert-success">Verification code sent to your email</div>';
-            
+            alertDiv.innerHTML = '<div class="alert alert-success">Code sent to email</div>';
             document.getElementById('forgotStep1').style.display = 'none';
             document.getElementById('forgotStep2').style.display = 'block';
-
             console.log('Verification Code: ' + verificationCode);
         }
 
@@ -1248,22 +1321,21 @@
             const alertDiv = document.getElementById('forgotAlert');
 
             if (!code || !newPassword) {
-                alertDiv.innerHTML = '<div class="alert alert-error">Please enter verification code and new password</div>';
+                alertDiv.innerHTML = '<div class="alert alert-error">Please enter code and new password</div>';
                 return;
             }
 
             if (code !== verificationCode) {
-                alertDiv.innerHTML = '<div class="alert alert-error">Invalid verification code</div>';
+                alertDiv.innerHTML = '<div class="alert alert-error">Invalid code</div>';
                 return;
             }
 
             const users = JSON.parse(localStorage.getItem('taskManagerUsers')) || {};
-            for (let username in users) {
-                if (users[username].email === resetEmail) {
-                    users[username].password = newPassword;
+            for (let u in users) {
+                if (users[u].email === resetEmail) {
+                    users[u].password = newPassword;
                     localStorage.setItem('taskManagerUsers', JSON.stringify(users));
-                    alertDiv.innerHTML = '<div class="alert alert-success">Password reset successfully. You can now login.</div>';
-                    
+                    alertDiv.innerHTML = '<div class="alert alert-success">Password reset successfully!</div>';
                     setTimeout(() => {
                         closeModal('forgotPasswordModal');
                         openLoginModal();
@@ -1282,12 +1354,20 @@
             updateSidebar();
             loadDashboard();
             populateSelects();
+            loadSettings();
 
             if (currentUser.role === 'admin') {
                 document.getElementById('adminSection').style.display = 'block';
                 document.getElementById('adminBadge').style.display = 'inline-block';
-                loadSettings();
+                document.getElementById('customizeDashboardBtn').style.display = 'block';
+                document.getElementById('customizeDashboardSection').style.display = 'block';
+                document.getElementById('createProjectBtn').style.display = 'block';
+                document.getElementById('createIssueBtn').style.display = 'block';
+                document.getElementById('createWorkBtn').style.display = 'block';
                 loadUsers();
+            } else {
+                // Regular user - show buttons only if assigned to projects
+                loadUserProjects();
             }
         }
 
@@ -1310,336 +1390,149 @@
             document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
             document.getElementById(pageId).classList.add('active');
             document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-            document.querySelector(`[data-page="${pageId}"]`).classList.add('active');
+            const navItem = document.querySelector(`[data-page="${pageId}"]`);
+            if (navItem) navItem.classList.add('active');
         }
 
-        // Dashboard
         function loadDashboard() {
             const projects = JSON.parse(localStorage.getItem('taskManagerProjects')) || {};
             const issues = JSON.parse(localStorage.getItem('taskManagerIssues')) || {};
             const workItems = JSON.parse(localStorage.getItem('taskManagerWorkItems')) || {};
 
-            let totalIssues = Object.keys(issues).length;
-            let totalWorkItems = Object.keys(workItems).length;
-            let totalEstimated = 0;
-            let totalLogged = 0;
+            let totalIssues = 0, totalWorkItems = 0, myAssigned = 0, completed = 0, inProgress = 0;
 
-            for (let id in workItems) {
-                totalEstimated += parseFloat(workItems[id].estimatedHours || 0);
-                totalLogged += parseFloat(workItems[id].loggedHours || 0);
+            for (let id in issues) {
+                if (currentUser.role === 'admin' || issues[id].assigneeUsername === currentUser.username) {
+                    totalIssues++;
+                    if (issues[id].assigneeUsername === currentUser.username) myAssigned++;
+                    if (issues[id].status === 'Closed') completed++;
+                }
             }
 
+            for (let id in workItems) {
+                if (currentUser.role === 'admin' || workItems[id].assigneeUsername === currentUser.username) {
+                    totalWorkItems++;
+                    if (workItems[id].assigneeUsername === currentUser.username) myAssigned++;
+                    if (workItems[id].status === 'Completed') completed++;
+                    if (workItems[id].status === 'In Progress') inProgress++;
+                }
+            }
+
+            const preferences = JSON.parse(localStorage.getItem('dashboardPreferences_' + currentUser.username)) || {
+                showProjects: true,
+                showIssues: true,
+                showWorkItems: true,
+                showAssigned: true,
+                showCompleted: true,
+                showInProgress: true
+            };
+
+            document.getElementById('projectsCard').style.display = preferences.showProjects ? 'block' : 'none';
+            document.getElementById('issuesCard').style.display = preferences.showIssues ? 'block' : 'none';
+            document.getElementById('workItemsCard').style.display = preferences.showWorkItems ? 'block' : 'none';
+            document.getElementById('assignedCard').style.display = preferences.showAssigned ? 'block' : 'none';
+            document.getElementById('completedCard').style.display = preferences.showCompleted ? 'block' : 'none';
+            document.getElementById('inProgressCard').style.display = preferences.showInProgress ? 'block' : 'none';
+
+            document.getElementById('totalProjects').textContent = Object.keys(projects).length;
             document.getElementById('totalIssues').textContent = totalIssues;
             document.getElementById('totalWorkItems').textContent = totalWorkItems;
-            document.getElementById('totalEstimatedHours').textContent = totalEstimated.toFixed(1);
-            document.getElementById('totalLoggedHours').textContent = totalLogged.toFixed(1);
+            document.getElementById('myAssigned').textContent = myAssigned;
+            document.getElementById('completedCount').textContent = completed;
+            document.getElementById('inProgressCount').textContent = inProgress;
         }
 
-        // Populate selects
+        function saveDashboardPreferences() {
+            const preferences = {
+                showProjects: document.getElementById('showProjects').checked,
+                showIssues: document.getElementById('showIssues').checked,
+                showWorkItems: document.getElementById('showWorkItems').checked,
+                showAssigned: document.getElementById('showAssigned').checked,
+                showCompleted: document.getElementById('showCompleted').checked,
+                showInProgress: document.getElementById('showInProgress').checked
+            };
+            localStorage.setItem('dashboardPreferences_' + currentUser.username, JSON.stringify(preferences));
+            loadDashboard();
+        }
+
+        function filterMyAssigned() {
+            switchPage('issues');
+            // Filter to show only assigned to current user
+        }
+
+        function filterCompleted() {
+            switchPage('issues');
+            // Filter to show completed items
+        }
+
+        function filterInProgress() {
+            switchPage('work-items');
+            // Filter to show in progress items
+        }
+
+        function openCustomizeDashboardModal() {
+            const preferences = JSON.parse(localStorage.getItem('dashboardPreferences_' + currentUser.username)) || {
+                showProjects: true,
+                showIssues: true,
+                showWorkItems: true,
+                showAssigned: true,
+                showCompleted: true,
+                showInProgress: true
+            };
+
+            document.getElementById('showProjects').checked = preferences.showProjects;
+            document.getElementById('showIssues').checked = preferences.showIssues;
+            document.getElementById('showWorkItems').checked = preferences.showWorkItems;
+            document.getElementById('showAssigned').checked = preferences.showAssigned;
+            document.getElementById('showCompleted').checked = preferences.showCompleted;
+            document.getElementById('showInProgress').checked = preferences.showInProgress;
+        }
+
         function populateSelects() {
             const projects = JSON.parse(localStorage.getItem('taskManagerProjects')) || {};
             const issues = JSON.parse(localStorage.getItem('taskManagerIssues')) || {};
-            const settings = JSON.parse(localStorage.getItem('taskManagerSettings')) || {};
             const users = JSON.parse(localStorage.getItem('taskManagerUsers')) || {};
+            const settings = JSON.parse(localStorage.getItem('taskManagerSettings')) || {};
 
             // Projects
-            let projectSelect = document.getElementById('issueProject');
-            projectSelect.innerHTML = '<option value="">Select Project</option>';
+            document.getElementById('issueProject').innerHTML = '<option value="">Select Project</option>';
+            document.getElementById('workProject').innerHTML = '<option value="">Select Project</option>';
             for (let key in projects) {
-                projectSelect.innerHTML += `<option value="${key}">${projects[key].name}</option>`;
-            }
-
-            // Type
-            let typeSelect = document.getElementById('issueType');
-            typeSelect.innerHTML = '';
-            (settings.issueTypes || []).forEach(type => {
-                typeSelect.innerHTML += `<option value="${type}">${type}</option>`;
-            });
-
-            // Priority
-            let prioritySelect = document.getElementById('issuePriority');
-            prioritySelect.innerHTML = '';
-            (settings.issuePriority || []).forEach(priority => {
-                prioritySelect.innerHTML += `<option value="${priority}">${priority}</option>`;
-            });
-
-            // Assignees
-            let assigneeSelect = document.getElementById('issueAssignee');
-            assigneeSelect.innerHTML = '<option value="">Assign to user</option>';
-            for (let username in users) {
-                assigneeSelect.innerHTML += `<option value="${username}">${users[username].name}</option>`;
+                const option1 = `<option value="${key}">${projects[key].name}</option>`;
+                document.getElementById('issueProject').innerHTML += option1;
+                document.getElementById('workProject').innerHTML += option1;
             }
 
             // Issues for work items
-            let issueSelect = document.getElementById('workIssue');
-            issueSelect.innerHTML = '<option value="">Select Issue</option>';
+            document.getElementById('workIssue').innerHTML = '<option value="">Select Issue</option>';
             for (let id in issues) {
-                issueSelect.innerHTML += `<option value="${id}">${issues[id].summary}</option>`;
+                document.getElementById('workIssue').innerHTML += `<option value="${id}">${issues[id].title} (${issues[id].projectKey}-${issues[id].number})</option>`;
             }
 
-            // Work assignees
-            let workAssigneeSelect = document.getElementById('workAssignee');
-            workAssigneeSelect.innerHTML = '<option value="">Assign to user</option>';
-            for (let username in users) {
-                workAssigneeSelect.innerHTML += `<option value="${username}">${users[username].name}</option>`;
+            // Users
+            let usersHtml = '<option value="">Select User</option>';
+            for (let u in users) {
+                usersHtml += `<option value="${u}">${users[u].name}</option>`;
             }
-        }
+            document.getElementById('issueAssignee').innerHTML = usersHtml;
+            document.getElementById('workAssignee').innerHTML = usersHtml;
 
-        // Issues
-        function openCreateIssueModal() {
-            populateSelects();
-            document.getElementById('createIssueModal').classList.add('active');
-        }
-
-        function createIssue() {
-            const summary = document.getElementById('issueSummary').value;
-            const project = document.getElementById('issueProject').value;
-            const type = document.getElementById('issueType').value;
-            const priority = document.getElementById('issuePriority').value;
-            const assignee = document.getElementById('issueAssignee').value;
-            const description = document.getElementById('issueDescription').value;
-            const alertDiv = document.getElementById('issueAlert');
-
-            if (!summary || !project || !type || !priority) {
-                alertDiv.innerHTML = '<div class="alert alert-error">Please fill all required fields</div>';
-                return;
-            }
-
-            const issues = JSON.parse(localStorage.getItem('taskManagerIssues')) || {};
-            const issueId = Object.keys(issues).length + 1;
-            const users = JSON.parse(localStorage.getItem('taskManagerUsers')) || {};
-
-            issues[issueId] = {
-                id: issueId,
-                summary,
-                project,
-                type,
-                priority,
-                description,
-                status: 'To Do',
-                assignee: assignee ? users[assignee].name : currentUser.name,
-                assigneeUsername: assignee || currentUser.username,
-                createdBy: currentUser.name,
-                createdAt: new Date().toISOString()
-            };
-
-            localStorage.setItem('taskManagerIssues', JSON.stringify(issues));
-            alertDiv.innerHTML = '<div class="alert alert-success">Issue created successfully!</div>';
-
-            setTimeout(() => {
-                closeModal('createIssueModal');
-                loadIssues();
-                loadDashboard();
-                populateSelects();
-                document.getElementById('issueSummary').value = '';
-                document.getElementById('issueDescription').value = '';
-            }, 1000);
-        }
-
-        function loadIssues() {
-            const issues = JSON.parse(localStorage.getItem('taskManagerIssues')) || {};
-            const tbody = document.getElementById('issuesTableBody');
-            tbody.innerHTML = '';
-
-            for (let issueId in issues) {
-                const issue = issues[issueId];
-                const statusClass = `status-${issue.status.toLowerCase().replace(' ', '')}`;
-                const priorityClass = `priority-${issue.priority.toLowerCase()}`;
-
-                tbody.innerHTML += `
-                    <tr>
-                        <td>#${issue.id}</td>
-                        <td>${issue.summary}</td>
-                        <td>${issue.project}</td>
-                        <td>${issue.type}</td>
-                        <td><span class="${priorityClass}">${issue.priority}</span></td>
-                        <td><span class="status-badge ${statusClass}">${issue.status}</span></td>
-                        <td>${issue.assignee}</td>
-                    </tr>
-                `;
-            }
-        }
-
-        // Work Items
-        function openCreateWorkItemModal() {
-            populateSelects();
-            document.getElementById('createWorkItemModal').classList.add('active');
-        }
-
-        function createWorkItem() {
-            const title = document.getElementById('workTitle').value;
-            const issueId = document.getElementById('workIssue').value;
-            const assignee = document.getElementById('workAssignee').value;
-            const estimated = parseFloat(document.getElementById('workEstimated').value) || 0;
-            const priority = document.getElementById('workPriority').value;
-            const description = document.getElementById('workDescription').value;
-            const alertDiv = document.getElementById('workAlert');
-
-            if (!title || !issueId || !assignee || estimated <= 0) {
-                alertDiv.innerHTML = '<div class="alert alert-error">Please fill all required fields</div>';
-                return;
-            }
-
-            const workItems = JSON.parse(localStorage.getItem('taskManagerWorkItems')) || {};
-            const workItemId = 'WORK-' + (Object.keys(workItems).length + 1);
-            const users = JSON.parse(localStorage.getItem('taskManagerUsers')) || {};
-
-            workItems[workItemId] = {
-                id: workItemId,
-                title,
-                issueId,
-                assignee: users[assignee].name,
-                assigneeUsername: assignee,
-                estimatedHours: estimated,
-                loggedHours: 0,
-                priority,
-                description,
-                status: 'To Do',
-                workLogs: [],
-                createdBy: currentUser.name,
-                createdAt: new Date().toISOString()
-            };
-
-            localStorage.setItem('taskManagerWorkItems', JSON.stringify(workItems));
-            alertDiv.innerHTML = '<div class="alert alert-success">Work item created successfully!</div>';
-
-            setTimeout(() => {
-                closeModal('createWorkItemModal');
-                loadWorkItems();
-                loadDashboard();
-                populateSelects();
-            }, 1000);
-        }
-
-        function loadWorkItems() {
-            const workItems = JSON.parse(localStorage.getItem('taskManagerWorkItems')) || {};
-            const container = document.getElementById('workItemsList');
-            container.innerHTML = '';
-
-            if (Object.keys(workItems).length === 0) {
-                container.innerHTML = '<p style="color: #8b92a0; text-align: center; padding: 20px;">No work items created yet.</p>';
-                return;
-            }
-
-            for (let id in workItems) {
-                const work = workItems[id];
-                const progress = work.estimatedHours > 0 ? (work.loggedHours / work.estimatedHours) * 100 : 0;
-                const progressClass = progress >= 100 ? '#ef4444' : (progress >= 75 ? '#f59e0b' : '#0052cc');
-
-                let workLogsHTML = '';
-                if (work.workLogs && work.workLogs.length > 0) {
-                    workLogsHTML = `
-                        <div style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #2d3748; font-size: 0.85rem;">
-                            <strong style="color: #8b92a0;">Work Logs:</strong>
-                            <div style="margin-top: 8px; max-height: 100px; overflow-y: auto;">
-                                ${work.workLogs.map(log => `
-                                    <div style="background: #0d1b2a; padding: 6px; border-radius: 4px; margin-bottom: 4px;">
-                                        <span style="color: #0052cc; font-weight: 600;">${log.hours}h</span> - ${log.details} 
-                                        <span style="color: #4b5563; font-size: 0.8rem;">(${log.status})</span>
-                                    </div>
-                                `).join('')}
-                            </div>
-                        </div>
-                    `;
-                }
-
-                const container_item = `
-                    <div class="work-item-card">
-                        <div class="work-header">
-                            <div>
-                                <div class="work-title">${work.title}</div>
-                                <div class="work-meta">${work.id} • Issue #${work.issueId} • Assigned to: ${work.assignee}</div>
-                            </div>
-                            <span class="status-badge" style="background: #0052cc30; color: #0052cc;">${work.status}</span>
-                        </div>
-
-                        <div class="work-stats">
-                            <div class="work-stat">
-                                <span class="work-stat-label">Estimated</span>
-                                <span class="work-stat-value">${work.estimatedHours}h</span>
-                            </div>
-                            <div class="work-stat">
-                                <span class="work-stat-label">Logged</span>
-                                <span class="work-stat-value">${work.loggedHours}h</span>
-                            </div>
-                            <div class="work-stat">
-                                <span class="work-stat-label">Progress</span>
-                                <span class="work-stat-value">${progress.toFixed(0)}%</span>
-                            </div>
-                        </div>
-
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: ${Math.min(progress, 100)}%; background: ${progressClass};"></div>
-                        </div>
-
-                        <div class="progress-text">
-                            ${work.loggedHours} of ${work.estimatedHours} hours logged
-                        </div>
-
-                        ${workLogsHTML}
-
-                        <button class="btn-secondary" onclick="openLogWorkModal('${work.id}')" style="width: 100%; margin-top: 12px;">+ Log Work Hours</button>
-                    </div>
-                `;
-                container.innerHTML += container_item;
-            }
-        }
-
-        function openLogWorkModal(workItemId) {
-            currentWorkItemId = workItemId;
-            document.getElementById('logWorkModal').classList.add('active');
-        }
-
-        function submitWorkLog() {
-            const hours = parseFloat(document.getElementById('hoursWorked').value);
-            const details = document.getElementById('workDetails').value;
-            const status = document.getElementById('logWorkStatus').value;
-            const alertDiv = document.getElementById('logWorkAlert');
-
-            if (!hours || hours <= 0 || !details) {
-                alertDiv.innerHTML = '<div class="alert alert-error">Please enter valid hours and details</div>';
-                return;
-            }
-
-            const workItems = JSON.parse(localStorage.getItem('taskManagerWorkItems')) || {};
-            const workItem = workItems[currentWorkItemId];
-
-            if (!workItem) {
-                alertDiv.innerHTML = '<div class="alert alert-error">Work item not found</div>';
-                return;
-            }
-
-            workItem.loggedHours += hours;
-            if (!workItem.workLogs) workItem.workLogs = [];
-            workItem.workLogs.push({
-                hours,
-                details,
-                status,
-                loggedBy: currentUser.name,
-                loggedAt: new Date().toISOString()
+            // Priorities
+            document.getElementById('issuePriority').innerHTML = '<option value="">Select Priority</option>';
+            (settings.priorities || []).forEach(p => {
+                document.getElementById('issuePriority').innerHTML += `<option value="${p}">${p}</option>`;
             });
 
-            if (status === 'Completed') {
-                workItem.status = 'Done';
-            } else if (status === 'In Progress') {
-                workItem.status = 'In Progress';
+            // Project users checkboxes
+            let checkboxHtml = '';
+            for (let u in users) {
+                checkboxHtml += `<div style="margin-bottom: 8px;"><input type="checkbox" id="user_${u}"> <label for="user_${u}" style="cursor: pointer;">${users[u].name}</label></div>`;
             }
-
-            localStorage.setItem('taskManagerWorkItems', JSON.stringify(workItems));
-            alertDiv.innerHTML = '<div class="alert alert-success">Work logged successfully!</div>';
-
-            setTimeout(() => {
-                closeModal('logWorkModal');
-                loadWorkItems();
-                loadDashboard();
-                document.getElementById('hoursWorked').value = '';
-                document.getElementById('workDetails').value = '';
-                document.getElementById('logWorkStatus').value = 'In Progress';
-            }, 1000);
+            document.getElementById('projectUsersCheckbox').innerHTML = checkboxHtml;
         }
 
-        // Projects
         function openCreateProjectModal() {
+            populateSelects();
             document.getElementById('createProjectModal').classList.add('active');
         }
 
@@ -1650,16 +1543,35 @@
             const alertDiv = document.getElementById('projectAlert');
 
             if (!name || !key) {
-                alertDiv.innerHTML = '<div class="alert alert-error">Please fill all required fields</div>';
+                alertDiv.innerHTML = '<div class="alert alert-error">Project name and key are required</div>';
                 return;
             }
 
             const projects = JSON.parse(localStorage.getItem('taskManagerProjects')) || {};
+            if (projects[key]) {
+                alertDiv.innerHTML = '<div class="alert alert-error">Project key already exists</div>';
+                return;
+            }
+
+            // Get assigned users
+            const users = JSON.parse(localStorage.getItem('taskManagerUsers')) || {};
+            const assignedUsers = [];
+            for (let u in users) {
+                if (document.getElementById('user_' + u) && document.getElementById('user_' + u).checked) {
+                    assignedUsers.push(u);
+                }
+            }
+            assignedUsers.push('Amar'); // Admin always has access
+
             projects[key] = {
                 key,
                 name,
                 description: desc,
-                createdAt: new Date().toISOString()
+                assignedUsers: assignedUsers,
+                issueCounter: 0,
+                workCounter: 0,
+                createdAt: new Date().toISOString(),
+                createdBy: currentUser.username
             };
 
             localStorage.setItem('taskManagerProjects', JSON.stringify(projects));
@@ -1670,6 +1582,9 @@
                 loadProjects();
                 loadDashboard();
                 populateSelects();
+                document.getElementById('projectName').value = '';
+                document.getElementById('projectKey').value = '';
+                document.getElementById('projectDesc').value = '';
             }, 1000);
         }
 
@@ -1678,21 +1593,547 @@
             const container = document.getElementById('projectsList');
             container.innerHTML = '';
 
+            if (Object.keys(projects).length === 0) {
+                container.innerHTML = '<div class="no-access">No projects available</div>';
+                return;
+            }
+
             for (let key in projects) {
                 const project = projects[key];
+                const hasAccess = currentUser.role === 'admin' || (project.assignedUsers && project.assignedUsers.includes(currentUser.username));
+
+                if (!hasAccess) continue;
+
                 container.innerHTML += `
-                    <div class="form-container" style="margin-bottom: 15px;">
-                        <h3 style="color: #0052cc; margin-bottom: 8px;">${project.name}</h3>
-                        <p style="color: #8b92a0; font-size: 0.9rem; margin-bottom: 8px;">Key: ${project.key}</p>
-                        <p style="color: #8b92a0; font-size: 0.9rem;">${project.description}</p>
+                    <div class="item-card">
+                        <div class="item-header">
+                            <div>
+                                <div class="item-title">${project.name}</div>
+                                <div class="item-id">Key: ${project.key}</div>
+                            </div>
+                        </div>
+                        <p style="color: #8b92a0; font-size: 0.9rem; margin-bottom: 12px;">${project.description || 'No description'}</p>
+                        <div class="item-meta">
+                            <div class="item-meta-item">
+                                <span class="item-meta-label">Created</span>
+                                <span class="item-meta-value">${new Date(project.createdAt).toLocaleDateString()}</span>
+                            </div>
+                            <div class="item-meta-item">
+                                <span class="item-meta-label">Created By</span>
+                                <span class="item-meta-value">${project.createdBy}</span>
+                            </div>
+                            <div class="item-meta-item">
+                                <span class="item-meta-label">Team Size</span>
+                                <span class="item-meta-value">${project.assignedUsers ? project.assignedUsers.length : 0}</span>
+                            </div>
+                        </div>
+                        ${currentUser.role === 'admin' ? `
+                            <div style="margin-top: 12px; padding-top: 12px; border-top: 1px solid #2d3748;">
+                                <button class="btn-secondary" onclick="editProject('${key}')" style="width: 100%; margin-bottom: 8px;">Edit Project</button>
+                                <button class="btn-danger" onclick="deleteProject('${key}')" style="width: 100%;">Delete Project</button>
+                            </div>
+                        ` : ''}
                     </div>
                 `;
             }
         }
 
-        // Admin - User Management
+        function loadUserProjects() {
+            const projects = JSON.parse(localStorage.getItem('taskManagerProjects')) || {};
+            let hasAccess = false;
+
+            for (let key in projects) {
+                if (projects[key].assignedUsers && projects[key].assignedUsers.includes(currentUser.username)) {
+                    hasAccess = true;
+                    break;
+                }
+            }
+
+            if (hasAccess) {
+                document.getElementById('createIssueBtn').style.display = 'block';
+                document.getElementById('createWorkBtn').style.display = 'block';
+            }
+        }
+
+        function openCreateIssueModal() {
+            populateSelects();
+            document.getElementById('createIssueModal').classList.add('active');
+        }
+
+        function createIssue() {
+            const projectKey = document.getElementById('issueProject').value;
+            const title = document.getElementById('issueTitle').value;
+            const priority = document.getElementById('issuePriority').value || 'Medium';
+            const assignee = document.getElementById('issueAssignee').value;
+            const desc = document.getElementById('issueDesc').value;
+            const alertDiv = document.getElementById('issueAlert');
+
+            if (!projectKey || !title) {
+                alertDiv.innerHTML = '<div class="alert alert-error">Project and title are required</div>';
+                return;
+            }
+
+            const projects = JSON.parse(localStorage.getItem('taskManagerProjects')) || {};
+            const issues = JSON.parse(localStorage.getItem('taskManagerIssues')) || {};
+            const users = JSON.parse(localStorage.getItem('taskManagerUsers')) || {};
+
+            if (!projects[projectKey]) {
+                alertDiv.innerHTML = '<div class="alert alert-error">Project not found</div>';
+                return;
+            }
+
+            projects[projectKey].issueCounter = (projects[projectKey].issueCounter || 0) + 1;
+            const issueNumber = projects[projectKey].issueCounter;
+            const issueId = projectKey + '-' + issueNumber;
+            const issueFilesList = document.getElementById('issueFilesList');
+            const attachments = Array.from(issueFilesList.children).map(item => ({
+                name: item.textContent.trim(),
+                size: '0 KB',
+                uploadedAt: new Date().toISOString()
+            }));
+
+            issues[issueId] = {
+                id: issueId,
+                projectKey,
+                number: issueNumber,
+                title,
+                priority,
+                status: 'New',
+                description: desc,
+                assigneeUsername: assignee || null,
+                assignee: assignee ? users[assignee].name : 'Unassigned',
+                createdBy: currentUser.username,
+                attachments: attachments,
+                createdAt: new Date().toISOString()
+            };
+
+            localStorage.setItem('taskManagerProjects', JSON.stringify(projects));
+            localStorage.setItem('taskManagerIssues', JSON.stringify(issues));
+
+            alertDiv.innerHTML = '<div class="alert alert-success">Issue created: ' + issueId + '</div>';
+
+            setTimeout(() => {
+                closeModal('createIssueModal');
+                loadIssues();
+                loadDashboard();
+                document.getElementById('issueTitle').value = '';
+                document.getElementById('issueDesc').value = '';
+                document.getElementById('issueFilesList').innerHTML = '';
+            }, 1000);
+        }
+
+        function loadIssues() {
+            const issues = JSON.parse(localStorage.getItem('taskManagerIssues')) || {};
+            const container = document.getElementById('issuesList');
+            container.innerHTML = '';
+
+            if (Object.keys(issues).length === 0) {
+                container.innerHTML = '<div class="no-access">No issues found</div>';
+                return;
+            }
+
+            for (let id in issues) {
+                const issue = issues[id];
+                const isAssigned = currentUser.role === 'admin' || issue.assigneeUsername === currentUser.username;
+                const canEdit = isAssigned;
+
+                const statusStyles = {
+                    'New': 'background: rgba(107, 114, 128, 0.2); color: #d1d5db;',
+                    'Rejected': 'background: rgba(239, 68, 68, 0.2); color: #fecaca;',
+                    'Open': 'background: rgba(59, 130, 246, 0.2); color: #93c5fd;',
+                    'Deferred': 'background: rgba(251, 146, 60, 0.2); color: #fdba74;',
+                    'Fixed': 'background: rgba(34, 197, 94, 0.2); color: #86efac;',
+                    'Retest': 'background: rgba(139, 92, 246, 0.2); color: #c4b5fd;',
+                    'Reopen': 'background: rgba(239, 68, 68, 0.2); color: #fecaca;',
+                    'Closed': 'background: rgba(34, 197, 94, 0.2); color: #86efac;'
+                };
+
+                const priorityClass = 'priority-' + (issue.priority || 'Medium').toLowerCase();
+
+                // Workflow transitions based on image
+                let workflowButtons = '';
+                if (canEdit) {
+                    if (issue.status === 'New') {
+                        workflowButtons = `
+                            <button class="status-button" onclick="updateIssueStatus('${issue.id}', 'Rejected')">→ Rejected</button>
+                            <button class="status-button" onclick="updateIssueStatus('${issue.id}', 'Open')">→ Open</button>
+                        `;
+                    } else if (issue.status === 'Rejected') {
+                        workflowButtons = `
+                            <button class="status-button" onclick="updateIssueStatus('${issue.id}', 'New')">← Back to New</button>
+                        `;
+                    } else if (issue.status === 'Open') {
+                        workflowButtons = `
+                            <button class="status-button" onclick="updateIssueStatus('${issue.id}', 'Deferred')">→ Deferred</button>
+                            <button class="status-button" onclick="updateIssueStatus('${issue.id}', 'Fixed')">→ Fixed</button>
+                        `;
+                    } else if (issue.status === 'Deferred') {
+                        workflowButtons = `
+                            <button class="status-button" onclick="updateIssueStatus('${issue.id}', 'Open')">← Back to Open</button>
+                        `;
+                    } else if (issue.status === 'Fixed') {
+                        workflowButtons = `
+                            <button class="status-button" onclick="updateIssueStatus('${issue.id}', 'Retest')">→ Retest</button>
+                        `;
+                    } else if (issue.status === 'Retest') {
+                        workflowButtons = `
+                            <button class="status-button" onclick="updateIssueStatus('${issue.id}', 'Reopen')">→ Reopen</button>
+                            <button class="status-button" onclick="updateIssueStatus('${issue.id}', 'Closed')">✓ Closed</button>
+                        `;
+                    } else if (issue.status === 'Reopen') {
+                        workflowButtons = `
+                            <button class="status-button" onclick="updateIssueStatus('${issue.id}', 'Fixed')">→ Fixed</button>
+                        `;
+                    } else if (issue.status === 'Closed') {
+                        workflowButtons = `
+                            <button class="status-button" onclick="updateIssueStatus('${issue.id}', 'Retest')">← Reopen</button>
+                        `;
+                    }
+                }
+
+                let attachmentsHtml = '';
+                if (issue.attachments && issue.attachments.length > 0) {
+                    attachmentsHtml = '<div style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #2d3748;"><strong style="color: #8b92a0; font-size: 0.85rem;">📎 Attachments:</strong><ul class="attachments-list">';
+                    issue.attachments.forEach(att => {
+                        attachmentsHtml += `<li class="attachment-item"><span class="attachment-name">${att.name}</span></li>`;
+                    });
+                    attachmentsHtml += '</ul></div>';
+                }
+
+                container.innerHTML += `
+                    <div class="item-card">
+                        <div class="item-header">
+                            <div>
+                                <div class="item-title">${issue.title}</div>
+                                <div class="item-id">${issue.id}</div>
+                            </div>
+                            <span class="status-badge" style="${statusStyles[issue.status]}">${issue.status}</span>
+                        </div>
+                        <div class="item-meta">
+                            <div class="item-meta-item">
+                                <span class="item-meta-label">Priority</span>
+                                <span class="item-meta-value ${priorityClass}">${issue.priority}</span>
+                            </div>
+                            <div class="item-meta-item">
+                                <span class="item-meta-label">Assigned To</span>
+                                <span class="item-meta-value">${issue.assignee}</span>
+                            </div>
+                            <div class="item-meta-item">
+                                <span class="item-meta-label">Created</span>
+                                <span class="item-meta-value">${new Date(issue.createdAt).toLocaleDateString()}</span>
+                            </div>
+                        </div>
+                        ${issue.description ? '<p style="color: #8b92a0; font-size: 0.9rem; margin: 12px 0;">' + issue.description + '</p>' : ''}
+                        ${attachmentsHtml}
+                        ${workflowButtons ? `
+                            <div class="workflow-buttons">
+                                ${workflowButtons}
+                            </div>
+                        ` : ''}
+                        ${!canEdit ? '<p style="color: #8b92a0; font-size: 0.85rem; margin-top: 12px;">⚠️ Only assignee and admin can change status</p>' : ''}
+                    </div>
+                `;
+            }
+        }
+
+        function updateIssueStatus(issueId, newStatus) {
+            const issues = JSON.parse(localStorage.getItem('taskManagerIssues')) || {};
+            if (issues[issueId]) {
+                issues[issueId].status = newStatus;
+                localStorage.setItem('taskManagerIssues', JSON.stringify(issues));
+                loadIssues();
+                loadDashboard();
+            }
+        }
+
+        function openCreateWorkItemModal() {
+            populateSelects();
+            document.getElementById('createWorkItemModal').classList.add('active');
+        }
+
+        function createWorkItem() {
+            const projectKey = document.getElementById('workProject').value;
+            const issueId = document.getElementById('workIssue').value;
+            const title = document.getElementById('workTitle').value;
+            const assignee = document.getElementById('workAssignee').value;
+            const estimated = parseFloat(document.getElementById('workEstimated').value) || 0;
+            const desc = document.getElementById('workDesc').value;
+            const alertDiv = document.getElementById('workAlert');
+
+            if (!projectKey || !issueId || !title) {
+                alertDiv.innerHTML = '<div class="alert alert-error">Project, issue, and title are required</div>';
+                return;
+            }
+
+            const projects = JSON.parse(localStorage.getItem('taskManagerProjects')) || {};
+            const workItems = JSON.parse(localStorage.getItem('taskManagerWorkItems')) || {};
+            const users = JSON.parse(localStorage.getItem('taskManagerUsers')) || {};
+
+            if (!projects[projectKey]) {
+                alertDiv.innerHTML = '<div class="alert alert-error">Project not found</div>';
+                return;
+            }
+
+            projects[projectKey].workCounter = (projects[projectKey].workCounter || 0) + 1;
+            const workNumber = projects[projectKey].workCounter;
+            const workId = projectKey + '#' + String(workNumber).padStart(3, '0');
+
+            const workFilesList = document.getElementById('workFilesList');
+            const attachments = Array.from(workFilesList.children).map(item => ({
+                name: item.textContent.trim(),
+                size: '0 KB',
+                uploadedAt: new Date().toISOString()
+            }));
+
+            workItems[workId] = {
+                id: workId,
+                projectKey,
+                issueId,
+                number: workNumber,
+                title,
+                status: 'Assigned',
+                estimatedHours: estimated,
+                loggedHours: 0,
+                description: desc,
+                assigneeUsername: assignee || null,
+                assignee: assignee ? users[assignee].name : 'Unassigned',
+                attachments: attachments,
+                workLogs: [],
+                createdBy: currentUser.username,
+                createdAt: new Date().toISOString()
+            };
+
+            localStorage.setItem('taskManagerProjects', JSON.stringify(projects));
+            localStorage.setItem('taskManagerWorkItems', JSON.stringify(workItems));
+
+            alertDiv.innerHTML = '<div class="alert alert-success">Work item created: ' + workId + '</div>';
+
+            setTimeout(() => {
+                closeModal('createWorkItemModal');
+                loadWorkItems();
+                loadDashboard();
+                document.getElementById('workTitle').value = '';
+                document.getElementById('workDesc').value = '';
+                document.getElementById('workEstimated').value = '';
+                document.getElementById('workFilesList').innerHTML = '';
+            }, 1000);
+        }
+
+        function loadWorkItems() {
+            const workItems = JSON.parse(localStorage.getItem('taskManagerWorkItems')) || {};
+            const container = document.getElementById('workItemsList');
+            container.innerHTML = '';
+
+            if (Object.keys(workItems).length === 0) {
+                container.innerHTML = '<div class="no-access">No work items found</div>';
+                return;
+            }
+
+            for (let id in workItems) {
+                const work = workItems[id];
+                const isAssigned = currentUser.role === 'admin' || work.assigneeUsername === currentUser.username;
+                const canEdit = isAssigned;
+                const progress = work.estimatedHours > 0 ? (work.loggedHours / work.estimatedHours) * 100 : 0;
+
+                const statusStyles = {
+                    'Assigned': 'background: rgba(107, 114, 128, 0.2); color: #d1d5db;',
+                    'Picked up': 'background: rgba(59, 130, 246, 0.2); color: #93c5fd;',
+                    'In Progress': 'background: rgba(139, 92, 246, 0.2); color: #c4b5fd;',
+                    'Failed': 'background: rgba(239, 68, 68, 0.2); color: #fecaca;',
+                    'Blocked': 'background: rgba(251, 146, 60, 0.2); color: #fdba74;',
+                    'Completed': 'background: rgba(34, 197, 94, 0.2); color: #86efac;'
+                };
+
+                let attachmentsHtml = '';
+                if (work.attachments && work.attachments.length > 0) {
+                    attachmentsHtml = '<div style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #2d3748;"><strong style="color: #8b92a0; font-size: 0.85rem;">📎 Attachments:</strong><ul class="attachments-list">';
+                    work.attachments.forEach(att => {
+                        attachmentsHtml += `<li class="attachment-item"><span class="attachment-name">${att.name}</span></li>`;
+                    });
+                    attachmentsHtml += '</ul></div>';
+                }
+
+                container.innerHTML += `
+                    <div class="item-card">
+                        <div class="item-header">
+                            <div>
+                                <div class="item-title">${work.title}</div>
+                                <div class="item-id">${work.id} • Issue: ${work.issueId}</div>
+                            </div>
+                            <span class="status-badge" style="${statusStyles[work.status]}">${work.status}</span>
+                        </div>
+                        <div class="item-meta">
+                            <div class="item-meta-item">
+                                <span class="item-meta-label">Assigned To</span>
+                                <span class="item-meta-value">${work.assignee}</span>
+                            </div>
+                            <div class="item-meta-item">
+                                <span class="item-meta-label">Estimated</span>
+                                <span class="item-meta-value">${work.estimatedHours}h</span>
+                            </div>
+                            <div class="item-meta-item">
+                                <span class="item-meta-label">Logged</span>
+                                <span class="item-meta-value">${work.loggedHours}h (${progress.toFixed(0)}%)</span>
+                            </div>
+                        </div>
+                        ${work.description ? '<p style="color: #8b92a0; font-size: 0.9rem; margin: 12px 0;">' + work.description + '</p>' : ''}
+                        ${attachmentsHtml}
+                        ${canEdit ? `
+                            <div class="workflow-buttons">
+                                <button class="status-button" onclick="updateWorkItemStatus('${work.id}', 'Picked up')" ${work.status === 'Assigned' ? '' : 'disabled'}>→ Picked up</button>
+                                <button class="status-button" onclick="updateWorkItemStatus('${work.id}', 'In Progress')" ${['Picked up', 'Blocked'].includes(work.status) ? '' : 'disabled'}>→ In Progress</button>
+                                <button class="status-button" onclick="updateWorkItemStatus('${work.id}', 'Blocked')" ${work.status === 'In Progress' ? '' : 'disabled'}>→ Blocked</button>
+                                <button class="status-button" onclick="updateWorkItemStatus('${work.id}', 'Completed')" ${work.status === 'In Progress' ? '' : 'disabled'}>✓ Completed</button>
+                                <button class="status-button" onclick="updateWorkItemStatus('${work.id}', 'Failed')" ${work.status === 'In Progress' ? '' : 'disabled'}>✗ Failed</button>
+                                <button class="btn-secondary" onclick="openLogWorkModal('${work.id}')" style="padding: 8px 12px; margin-top: 8px;">Log Hours</button>
+                            </div>
+                        ` : '<p style="color: #8b92a0; font-size: 0.85rem; margin-top: 12px;">⚠️ Only assignee and admin can change status</p>'}
+                    </div>
+                `;
+            }
+        }
+
+        function updateWorkItemStatus(workId, newStatus) {
+            const workItems = JSON.parse(localStorage.getItem('taskManagerWorkItems')) || {};
+            if (workItems[workId]) {
+                workItems[workId].status = newStatus;
+                localStorage.setItem('taskManagerWorkItems', JSON.stringify(workItems));
+                loadWorkItems();
+                loadDashboard();
+            }
+        }
+
+        function openLogWorkModal(workId) {
+            currentEditingItem = workId;
+            document.getElementById('logWorkModal').classList.add('active');
+        }
+
+        function loadSettings() {
+            const settings = JSON.parse(localStorage.getItem('taskManagerSettings')) || {};
+
+            // Issue Status
+            const issueStatusList = document.getElementById('issueStatusList');
+            issueStatusList.innerHTML = '';
+            (settings.issueStatus || []).forEach((status, index) => {
+                issueStatusList.innerHTML += `
+                    <li class="field-item">
+                        <span>${status}</span>
+                        <button class="btn-icon" onclick="deleteIssueStatus(${index})" style="padding: 4px 8px; background: transparent; border: 1px solid #2d3748; color: #8b92a0; border-radius: 4px; cursor: pointer; font-size: 0.75rem;">Delete</button>
+                    </li>
+                `;
+            });
+
+            // Work Item Status
+            const workItemStatusList = document.getElementById('workItemStatusList');
+            workItemStatusList.innerHTML = '';
+            (settings.workItemStatus || []).forEach((status, index) => {
+                workItemStatusList.innerHTML += `
+                    <li class="field-item">
+                        <span>${status}</span>
+                        <button class="btn-icon" onclick="deleteWorkItemStatus(${index})" style="padding: 4px 8px; background: transparent; border: 1px solid #2d3748; color: #8b92a0; border-radius: 4px; cursor: pointer; font-size: 0.75rem;">Delete</button>
+                    </li>
+                `;
+            });
+
+            // Priority
+            const priorityList = document.getElementById('priorityList');
+            priorityList.innerHTML = '';
+            (settings.priorities || []).forEach((priority, index) => {
+                priorityList.innerHTML += `
+                    <li class="field-item">
+                        <span>${priority}</span>
+                        <button class="btn-icon" onclick="deletePriority(${index})" style="padding: 4px 8px; background: transparent; border: 1px solid #2d3748; color: #8b92a0; border-radius: 4px; cursor: pointer; font-size: 0.75rem;">Delete</button>
+                    </li>
+                `;
+            });
+
+            // Defect Categories
+            const defectList = document.getElementById('defectCategoryList');
+            defectList.innerHTML = '';
+            (settings.defectCategories || []).forEach((category, index) => {
+                defectList.innerHTML += `
+                    <li class="field-item">
+                        <span>${category}</span>
+                        <button class="btn-icon" onclick="deleteDefectCategory(${index})" style="padding: 4px 8px; background: transparent; border: 1px solid #2d3748; color: #8b92a0; border-radius: 4px; cursor: pointer; font-size: 0.75rem;">Delete</button>
+                    </li>
+                `;
+            });
+        }
+
+        function addIssueStatus() {
+            const value = document.getElementById('newIssueStatus').value.trim();
+            if (!value) return;
+            const settings = JSON.parse(localStorage.getItem('taskManagerSettings')) || {};
+            if (!settings.issueStatus) settings.issueStatus = [];
+            settings.issueStatus.push(value);
+            localStorage.setItem('taskManagerSettings', JSON.stringify(settings));
+            document.getElementById('newIssueStatus').value = '';
+            loadSettings();
+        }
+
+        function deleteIssueStatus(index) {
+            const settings = JSON.parse(localStorage.getItem('taskManagerSettings')) || {};
+            settings.issueStatus.splice(index, 1);
+            localStorage.setItem('taskManagerSettings', JSON.stringify(settings));
+            loadSettings();
+        }
+
+        function addWorkItemStatus() {
+            const value = document.getElementById('newWorkItemStatus').value.trim();
+            if (!value) return;
+            const settings = JSON.parse(localStorage.getItem('taskManagerSettings')) || {};
+            if (!settings.workItemStatus) settings.workItemStatus = [];
+            settings.workItemStatus.push(value);
+            localStorage.setItem('taskManagerSettings', JSON.stringify(settings));
+            document.getElementById('newWorkItemStatus').value = '';
+            loadSettings();
+        }
+
+        function deleteWorkItemStatus(index) {
+            const settings = JSON.parse(localStorage.getItem('taskManagerSettings')) || {};
+            settings.workItemStatus.splice(index, 1);
+            localStorage.setItem('taskManagerSettings', JSON.stringify(settings));
+            loadSettings();
+        }
+
+        function addPriority() {
+            const value = document.getElementById('newPriority').value.trim();
+            if (!value) return;
+            const settings = JSON.parse(localStorage.getItem('taskManagerSettings')) || {};
+            if (!settings.priorities) settings.priorities = [];
+            settings.priorities.push(value);
+            localStorage.setItem('taskManagerSettings', JSON.stringify(settings));
+            document.getElementById('newPriority').value = '';
+            loadSettings();
+            populateSelects();
+        }
+
+        function deletePriority(index) {
+            const settings = JSON.parse(localStorage.getItem('taskManagerSettings')) || {};
+            settings.priorities.splice(index, 1);
+            localStorage.setItem('taskManagerSettings', JSON.stringify(settings));
+            loadSettings();
+        }
+
+        function addDefectCategory() {
+            const value = document.getElementById('newDefectCategory').value.trim();
+            if (!value) return;
+            const settings = JSON.parse(localStorage.getItem('taskManagerSettings')) || {};
+            if (!settings.defectCategories) settings.defectCategories = [];
+            settings.defectCategories.push(value);
+            localStorage.setItem('taskManagerSettings', JSON.stringify(settings));
+            document.getElementById('newDefectCategory').value = '';
+            loadSettings();
+        }
+
+        function deleteDefectCategory(index) {
+            const settings = JSON.parse(localStorage.getItem('taskManagerSettings')) || {};
+            settings.defectCategories.splice(index, 1);
+            localStorage.setItem('taskManagerSettings', JSON.stringify(settings));
+            loadSettings();
+        }
+
         function openCreateUserModal() {
-            if (currentUser.role !== 'admin') return;
             document.getElementById('createUserModal').classList.add('active');
         }
 
@@ -1705,7 +2146,7 @@
             const alertDiv = document.getElementById('userAlert');
 
             if (!name || !username || !email || !password) {
-                alertDiv.innerHTML = '<div class="alert alert-error">Please fill all required fields</div>';
+                alertDiv.innerHTML = '<div class="alert alert-error">All fields are required</div>';
                 return;
             }
 
@@ -1731,155 +2172,91 @@
                 closeModal('createUserModal');
                 loadUsers();
                 populateSelects();
+                document.getElementById('newUserName').value = '';
+                document.getElementById('newUsername').value = '';
+                document.getElementById('newUserEmail').value = '';
+                document.getElementById('newUserPassword').value = '';
             }, 1000);
         }
 
         function loadUsers() {
-            if (currentUser.role !== 'admin') return;
             const users = JSON.parse(localStorage.getItem('taskManagerUsers')) || {};
             const container = document.getElementById('usersList');
             container.innerHTML = '';
 
-            for (let username in users) {
-                const user = users[username];
-                const roleColor = user.role === 'admin' ? '#dc2626' : '#0052cc';
-
+            for (let u in users) {
+                const user = users[u];
                 container.innerHTML += `
-                    <div style="background: #151d2a; border: 1px solid #2d3748; border-radius: 6px; padding: 15px; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center;">
-                        <div>
-                            <h4 style="color: #f0f4f8; margin-bottom: 4px;">${user.name}</h4>
-                            <p style="color: #8b92a0; font-size: 0.85rem;">@${user.username} • ${user.email}</p>
+                    <div class="user-list-item">
+                        <div class="user-list-info">
+                            <h4>${user.name}</h4>
+                            <p>@${user.username} • ${user.email}</p>
                         </div>
-                        <span style="padding: 5px 12px; background: ${roleColor}30; color: ${roleColor}; border-radius: 4px; font-size: 0.8rem; font-weight: 600;">${user.role.toUpperCase()}</span>
+                        <div style="display: flex; gap: 8px; align-items: center;">
+                            <span style="padding: 5px 12px; background: ${user.role === 'admin' ? '#dc2626' : '#0052cc'}30; color: ${user.role === 'admin' ? '#dc2626' : '#0052cc'}; border-radius: 4px; font-size: 0.8rem; font-weight: 600;">${user.role.toUpperCase()}</span>
+                            ${currentUser.role === 'admin' && u !== 'Amar' ? `
+                                <button class="btn-danger" onclick="deleteUser('${u}')" style="padding: 6px 12px; font-size: 0.8rem;">Delete</button>
+                            ` : ''}
+                        </div>
                     </div>
                 `;
             }
         }
 
-        // Admin - Settings
-        function loadSettings() {
-            if (currentUser.role !== 'admin') return;
-            const settings = JSON.parse(localStorage.getItem('taskManagerSettings')) || {};
-
-            const issueTypesList = document.getElementById('issueTypesList');
-            issueTypesList.innerHTML = '';
-            (settings.issueTypes || []).forEach((type, index) => {
-                issueTypesList.innerHTML += `
-                    <li style="list-style: none; background: #1a2332; padding: 12px; border-radius: 4px; margin-bottom: 8px; display: flex; justify-content: space-between;">
-                        <span style="color: #e5e7eb;">${type}</span>
-                        <button class="btn-icon" onclick="deleteIssueType(${index})" style="padding: 6px 10px; background: transparent; border: 1px solid #2d3748; color: #8b92a0; border-radius: 4px; cursor: pointer;">Delete</button>
-                    </li>
-                `;
-            });
-
-            const issueStatusList = document.getElementById('issueStatusList');
-            issueStatusList.innerHTML = '';
-            (settings.issueStatus || []).forEach((status, index) => {
-                issueStatusList.innerHTML += `
-                    <li style="list-style: none; background: #1a2332; padding: 12px; border-radius: 4px; margin-bottom: 8px; display: flex; justify-content: space-between;">
-                        <span style="color: #e5e7eb;">${status}</span>
-                        <button class="btn-icon" onclick="deleteIssueStatus(${index})" style="padding: 6px 10px; background: transparent; border: 1px solid #2d3748; color: #8b92a0; border-radius: 4px; cursor: pointer;">Delete</button>
-                    </li>
-                `;
-            });
-
-            const issuePriorityList = document.getElementById('issuePriorityList');
-            issuePriorityList.innerHTML = '';
-            (settings.issuePriority || []).forEach((priority, index) => {
-                issuePriorityList.innerHTML += `
-                    <li style="list-style: none; background: #1a2332; padding: 12px; border-radius: 4px; margin-bottom: 8px; display: flex; justify-content: space-between;">
-                        <span style="color: #e5e7eb;">${priority}</span>
-                        <button class="btn-icon" onclick="deleteIssuePriority(${index})" style="padding: 6px 10px; background: transparent; border: 1px solid #2d3748; color: #8b92a0; border-radius: 4px; cursor: pointer;">Delete</button>
-                    </li>
-                `;
-            });
-
-            const defectCategoriesList = document.getElementById('defectCategoriesList');
-            defectCategoriesList.innerHTML = '';
-            (settings.defectCategories || []).forEach((category, index) => {
-                defectCategoriesList.innerHTML += `
-                    <li style="list-style: none; background: #1a2332; padding: 12px; border-radius: 4px; margin-bottom: 8px; display: flex; justify-content: space-between;">
-                        <span style="color: #e5e7eb;">${category}</span>
-                        <button class="btn-icon" onclick="deleteDefectCategory(${index})" style="padding: 6px 10px; background: transparent; border: 1px solid #2d3748; color: #8b92a0; border-radius: 4px; cursor: pointer;">Delete</button>
-                    </li>
-                `;
-            });
+        function deleteUser(username) {
+            if (confirm('Are you sure you want to delete this user?')) {
+                const users = JSON.parse(localStorage.getItem('taskManagerUsers')) || {};
+                delete users[username];
+                localStorage.setItem('taskManagerUsers', JSON.stringify(users));
+                loadUsers();
+                populateSelects();
+            }
         }
 
-        function addIssueType() {
-            const value = document.getElementById('newIssueType').value.trim();
-            if (!value) return;
-            const settings = JSON.parse(localStorage.getItem('taskManagerSettings')) || {};
-            if (!settings.issueTypes) settings.issueTypes = [];
-            settings.issueTypes.push(value);
-            localStorage.setItem('taskManagerSettings', JSON.stringify(settings));
-            document.getElementById('newIssueType').value = '';
-            loadSettings();
-            populateSelects();
+        function editProject(projectKey) {
+            alert('Edit project feature coming soon!');
         }
 
-        function deleteIssueType(index) {
-            const settings = JSON.parse(localStorage.getItem('taskManagerSettings')) || {};
-            settings.issueTypes.splice(index, 1);
-            localStorage.setItem('taskManagerSettings', JSON.stringify(settings));
-            loadSettings();
-            populateSelects();
+        function deleteProject(projectKey) {
+            if (confirm('Delete this project? This cannot be undone.')) {
+                const projects = JSON.parse(localStorage.getItem('taskManagerProjects')) || {};
+                delete projects[projectKey];
+                localStorage.setItem('taskManagerProjects', JSON.stringify(projects));
+                loadProjects();
+                loadDashboard();
+            }
         }
 
-        function addIssueStatus() {
-            const value = document.getElementById('newIssueStatus').value.trim();
-            if (!value) return;
-            const settings = JSON.parse(localStorage.getItem('taskManagerSettings')) || {};
-            if (!settings.issueStatus) settings.issueStatus = [];
-            settings.issueStatus.push(value);
-            localStorage.setItem('taskManagerSettings', JSON.stringify(settings));
-            document.getElementById('newIssueStatus').value = '';
-            loadSettings();
-        }
+        // File handling
+        document.addEventListener('DOMContentLoaded', function() {
+            // Issue files
+            const issueFileInput = document.getElementById('issueFiles');
+            if (issueFileInput) {
+                issueFileInput.addEventListener('change', function() {
+                    updateFileList('issueFiles', 'issueFilesList');
+                });
+            }
 
-        function deleteIssueStatus(index) {
-            const settings = JSON.parse(localStorage.getItem('taskManagerSettings')) || {};
-            settings.issueStatus.splice(index, 1);
-            localStorage.setItem('taskManagerSettings', JSON.stringify(settings));
-            loadSettings();
-        }
+            // Work files
+            const workFileInput = document.getElementById('workFiles');
+            if (workFileInput) {
+                workFileInput.addEventListener('change', function() {
+                    updateFileList('workFiles', 'workFilesList');
+                });
+            }
+        });
 
-        function addIssuePriority() {
-            const value = document.getElementById('newIssuePriority').value.trim();
-            if (!value) return;
-            const settings = JSON.parse(localStorage.getItem('taskManagerSettings')) || {};
-            if (!settings.issuePriority) settings.issuePriority = [];
-            settings.issuePriority.push(value);
-            localStorage.setItem('taskManagerSettings', JSON.stringify(settings));
-            document.getElementById('newIssuePriority').value = '';
-            loadSettings();
-            populateSelects();
-        }
+        function updateFileList(inputId, listId) {
+            const input = document.getElementById(inputId);
+            const list = document.getElementById(listId);
+            list.innerHTML = '';
 
-        function deleteIssuePriority(index) {
-            const settings = JSON.parse(localStorage.getItem('taskManagerSettings')) || {};
-            settings.issuePriority.splice(index, 1);
-            localStorage.setItem('taskManagerSettings', JSON.stringify(settings));
-            loadSettings();
-            populateSelects();
-        }
-
-        function addDefectCategory() {
-            const value = document.getElementById('newDefectCategory').value.trim();
-            if (!value) return;
-            const settings = JSON.parse(localStorage.getItem('taskManagerSettings')) || {};
-            if (!settings.defectCategories) settings.defectCategories = [];
-            settings.defectCategories.push(value);
-            localStorage.setItem('taskManagerSettings', JSON.stringify(settings));
-            document.getElementById('newDefectCategory').value = '';
-            loadSettings();
-        }
-
-        function deleteDefectCategory(index) {
-            const settings = JSON.parse(localStorage.getItem('taskManagerSettings')) || {};
-            settings.defectCategories.splice(index, 1);
-            localStorage.setItem('taskManagerSettings', JSON.stringify(settings));
-            loadSettings();
+            for (let file of input.files) {
+                const li = document.createElement('li');
+                li.className = 'attachment-item';
+                li.innerHTML = `<span class="attachment-name">${file.name}</span><button class="attachment-delete" onclick="this.parentElement.remove()">Remove</button>`;
+                list.appendChild(li);
+            }
         }
 
         window.addEventListener('load', function() {
